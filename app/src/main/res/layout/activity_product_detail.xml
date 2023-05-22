@@ -33,7 +33,7 @@
         android:id="@+id/addToCartBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#FFA500"
+        android:background="#FFC400"
         android:text="Add to Cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

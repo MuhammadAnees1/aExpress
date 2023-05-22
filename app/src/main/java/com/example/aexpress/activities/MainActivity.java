@@ -29,14 +29,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
     ActivityMainBinding binding;
     CategoryAdapter categoryAdapter;
     ArrayList<Category> categories;
     ProductAdaptor productAdaptor;
     ArrayList<Product> products;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,14 +53,12 @@ public class MainActivity extends AppCompatActivity {
                 intent.putExtra("query",text.toString());
                 startActivity(intent);
             }
-
             @Override
             public void onButtonClicked(int buttonCode) {
 
 
             }
         });
-
 
         initCategories();
         initProducts();
@@ -82,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         binding.categoriesList.setLayoutManager(layoutManager);
         binding.categoriesList.setAdapter(categoryAdapter);
     }
-
     void initProducts() {
         products = new ArrayList<>();
         productAdaptor = new ProductAdaptor(this, products);
@@ -92,12 +86,9 @@ public class MainActivity extends AppCompatActivity {
         binding.productList.setLayoutManager(layoutManager);
         binding.productList.setAdapter(productAdaptor);
     }
-
     private void initSlider() {
         getRecentOffers();
     }
-
-
     void getCategories() {
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.GET, Constants.GET_CATEGORIES_URL, new Response.Listener<String>() {
@@ -160,7 +151,6 @@ public class MainActivity extends AppCompatActivity {
                                 childObj.getDouble("price_discount"),
                                 childObj.getInt("stock"),
                                 childObj.getInt("id")
-
                         );
                         products.add(product);
                     }
@@ -171,10 +161,8 @@ public class MainActivity extends AppCompatActivity {
             }
         }, error -> {
         });
-
         queue.add(request);
     }
-
     void getRecentOffers() {
         RequestQueue queue = Volley.newRequestQueue(this);
 

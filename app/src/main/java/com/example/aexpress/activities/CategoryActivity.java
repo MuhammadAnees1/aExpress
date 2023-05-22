@@ -45,20 +45,15 @@ public class CategoryActivity extends AppCompatActivity {
         products = new ArrayList<>();
         productAdaptor = new ProductAdaptor(this, products);
 
-
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         binding.productList.setLayoutManager(layoutManager);
         binding.productList.setAdapter(productAdaptor);
-
-
     }
-
     @Override
     public boolean onNavigateUp() {
         finish();
         return super.onNavigateUp();
     }
-
     void getProducts(int catId) {
         RequestQueue queue = Volley.newRequestQueue(this);
 
