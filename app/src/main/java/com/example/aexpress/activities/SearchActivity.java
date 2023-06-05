@@ -88,4 +88,10 @@ public class SearchActivity extends AppCompatActivity {
 
         queue.add(request);
     }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
+    }
 }

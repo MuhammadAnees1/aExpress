@@ -2,6 +2,8 @@ package com.example.aexpress.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Category> categories;
     ProductAdaptor productAdaptor;
     ArrayList<Product> products;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
         getRecentOffers();
     }
     void getCategories() {
+
+binding.removeBackground.setVisibility(View.VISIBLE);
+       binding.loadingProgressBar.setVisibility(View.VISIBLE);
+
         RequestQueue queue = Volley.newRequestQueue(this);
         StringRequest request = new StringRequest(Request.Method.GET, Constants.GET_CATEGORIES_URL, new Response.Listener<String>() {
             @Override
@@ -97,15 +104,14 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject mainObj = new JSONObject(response);
                     if (mainObj.getString("status").equals("success")) {
-//                        use this line to get data in side the object
+// use this line to get data in side the object
                         JSONArray categoriesArray = mainObj.getJSONArray("categories");
 //
                         for (int i = 0; i < categoriesArray.length(); i++) {
-                            //                        use this line use to get data in side the Array
+
+                            // use this line use to get data in side the Array
                             JSONObject object = categoriesArray.getJSONObject(i);
-
 //get this from model folder CategoryClass
-
                             Category category = new Category
                                     (object.getString("name"),
                                             Constants.CATEGORIES_IMAGE_URL + object.getString("icon"),
@@ -116,9 +122,10 @@ public class MainActivity extends AppCompatActivity {
                             categories.add(category);
                         }
                         categoryAdapter.notifyDataSetChanged();
-                    } else {
-                        // DO nothing
                     }
+                    binding.removeBackground.setVisibility(View.GONE);
+                    binding.loadingProgressBar.setVisibility(View.GONE);
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -131,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(request);
     }
-
     void getRecentProducts() {
         RequestQueue queue = Volley.newRequestQueue(this);
 

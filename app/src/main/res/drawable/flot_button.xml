@@ -1,0 +1,9 @@
+<!-- custom_button.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <gradient
+        android:startColor="#FF3366"
+        android:endColor="#FF6699"
+        android:angle="45" />
+    <corners android:radius="20dp" />
+</shape>
+

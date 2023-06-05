@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#808080"
+    android:background="@color/backGroundColor"
     android:orientation="vertical"
     tools:context=".activities.CheckoutActivity">
 
@@ -164,15 +164,15 @@
                     <View
                         android:id="@+id/view2"
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
+                        android:layout_height="2dp"
                         android:background="#808080" />
 
                     <EditText
                         android:id="@+id/nameBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="#D3D3D3"
+                        android:layout_margin="5dp"
+                        android:background="@color/backGroundColor"
                         android:ems="10"
                         android:hint="Full Name"
                         android:inputType="textPersonName"
@@ -182,8 +182,8 @@
                         android:id="@+id/emailBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="#D3D3D3"
+                        android:layout_margin="5dp"
+                        android:background="@color/backGroundColor"
                         android:ems="10"
                         android:hint="Email Address"
                         android:inputType="textPersonName"
@@ -193,8 +193,8 @@
                         android:id="@+id/phoneBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="#D3D3D3"
+                        android:layout_margin="5dp"
+                        android:background="@color/backGroundColor"
                         android:ems="10"
                         android:hint="Phone Number"
                         android:inputType="textPersonName"
@@ -204,8 +204,8 @@
                         android:id="@+id/addressBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="#D3D3D3"
+                        android:layout_margin="5dp"
+                        android:background="@color/backGroundColor"
                         android:ems="10"
                         android:hint="Address"
                         android:inputType="textPersonName"
@@ -215,8 +215,8 @@
                         android:id="@+id/dateBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="#D3D3D3"
+                        android:layout_margin="5dp"
+                        android:background="@color/backGroundColor"
                         android:ems="10"
                         android:hint="Date Shipping"
                         android:inputType="textPersonName"
@@ -226,8 +226,8 @@
                         android:id="@+id/commentBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="#D3D3D3"
+                        android:layout_margin="5dp"
+                        android:background="@color/backGroundColor"
                         android:ems="10"
                         android:hint="Additional Comments"
                         android:inputType="textPersonName"
@@ -238,7 +238,7 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginBottom="10dp"
                 android:visibility="visible">
 
@@ -253,9 +253,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:paddingTop="15dp"
+                        android:paddingTop="10dp"
                         android:paddingRight="10dp"
-                        android:paddingBottom="15dp"
+                        android:paddingBottom="10dp"
                         android:text="Product Order List"
                         android:textSize="16sp" />
 
@@ -272,14 +272,14 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/checkoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@color/purple_500"
+                android:background="@drawable/flot_button"
                 android:text="Process Checkout"
-                android:textColor="#4527A0" />
+                android:textColor="#FFF" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </LinearLayout>

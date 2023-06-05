@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 public class CartActivity extends AppCompatActivity {
-
-    ActivityCartBinding binding;
+    public ActivityCartBinding binding;
     CartAdaptor adaptor;
     ArrayList<Product> products;
 
@@ -39,6 +38,8 @@ public class CartActivity extends AppCompatActivity {
             int quantity = item.getValue();
             product.setQuantity(quantity);
 
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
             products.add(product);
         }
 
@@ -49,14 +50,12 @@ public class CartActivity extends AppCompatActivity {
                 }
             });
 
-
-            LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
             DividerItemDecoration itemDecoration = new DividerItemDecoration(this, layoutManager.getOrientation());
             binding.cartList.setLayoutManager(layoutManager);
             binding.cartList.addItemDecoration(itemDecoration);
             binding.cartList.setAdapter(adaptor);
             binding.subtotal.setText(String.format("PKR %.2f",cart.getTotalPrice()));
-
 
             binding.continueBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -68,7 +67,6 @@ public class CartActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         }
-
     @Override
     public boolean onSupportNavigateUp() {
         finish();

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProductDetailActivity">
 
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/addToCartBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/productImage"
+        tools:ignore="MissingConstraints" />
+
+
     <ImageView
         android:id="@+id/productImage"
         android:layout_width="0dp"
@@ -24,6 +37,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+
         android:text="Loading details..."
         app:layout_constraintEnd_toEndOf="@+id/productImage"
         app:layout_constraintStart_toStartOf="@+id/productImage"
@@ -33,9 +48,28 @@
         android:id="@+id/addToCartBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="#FFC400"
+        android:background="@drawable/flot_button"
+        android:layout_marginBottom="2dp"
         android:text="Add to Cart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
+        android:contentDescription="@string/cartButton"
+        app:backgroundTint="#FF6699"
+        app:layout_constraintBottom_toTopOf="@+id/addToCartBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/cart"
+        app:tint="@color/white"
+        tools:ignore="MissingConstraints" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

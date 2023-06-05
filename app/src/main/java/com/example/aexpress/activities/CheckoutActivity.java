@@ -1,10 +1,5 @@
 package com.example.aexpress.activities;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.Calendar;
@@ -13,13 +8,17 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.aexpress.adaptors.CartAdaptor;
 import com.example.aexpress.databinding.ActivityCheckoutBinding;
@@ -38,20 +37,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CheckoutActivity extends AppCompatActivity {
-    ActivityCheckoutBinding binding;
+   public ActivityCheckoutBinding binding;
     CartAdaptor adapter;
     ArrayList<Product> products;
     double totalPrice = 0;
     final int tax = 11;
     Cart cart;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityCheckoutBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-
 
         products = new ArrayList<>();
 
@@ -64,12 +60,14 @@ public class CheckoutActivity extends AppCompatActivity {
 
             products.add(product);
         }
-
         adapter = new CartAdaptor(this, products, new CartAdaptor.CartListener() {
             @Override
             public void onQuantityChanged() {
-                binding.subtotal.setText(String.format("PKR %.2f",cart.getTotalPrice()));
+                binding.subtotal.setText(String.format("PKR %.2f", cart.getTotalPrice()));
+                totalPrice = (cart.getTotalPrice().doubleValue() * tax / 100) + cart.getTotalPrice().doubleValue();
+                binding.total.setText("PKR " + totalPrice);
             }
+
         });
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -78,7 +76,7 @@ public class CheckoutActivity extends AppCompatActivity {
         binding.cartList.addItemDecoration(itemDecoration);
         binding.cartList.setAdapter(adapter);
 
-        binding.subtotal.setText(String.format("PKR %.2f",cart.getTotalPrice()));
+        binding.subtotal.setText(String.format("PKR %.2f", cart.getTotalPrice()));
 
         totalPrice = (cart.getTotalPrice().doubleValue() * tax / 100) + cart.getTotalPrice().doubleValue();
         binding.total.setText("PKR " + totalPrice);
@@ -94,6 +92,20 @@ public class CheckoutActivity extends AppCompatActivity {
     }
 
     void processOrder() {
+
+        // Retrieve the text from the input fields
+        String address = binding.addressBox.getText().toString();
+        String buyer = binding.nameBox.getText().toString();
+        String email = binding.emailBox.getText().toString();
+        String phone = binding.phoneBox.getText().toString();
+
+        // Check if any of the required fields are empty
+        if (address.isEmpty() || buyer.isEmpty() || email.isEmpty() || phone.isEmpty()) {
+            // Display an error message and return without processing the order
+            Toast.makeText(this, "Please fill in all required fields", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         RequestQueue queue = Volley.newRequestQueue(this);
         JSONObject productOrder = new JSONObject();
@@ -156,7 +168,8 @@ public class CheckoutActivity extends AppCompatActivity {
                                         startActivity(intent);
                                     }
                                 }).show();
-                    } else {
+                    }
+                    else {
                         new AlertDialog.Builder(CheckoutActivity.this)
                                 .setTitle("Order Failed")
                                 .setMessage("Something went wrong, please try again.")
@@ -177,7 +190,8 @@ public class CheckoutActivity extends AppCompatActivity {
             public void onErrorResponse(VolleyError error) {
 
             }
-        }) {
+        })
+        {
 
 //            api keys passing by using headers method
 

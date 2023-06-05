@@ -1,28 +1,24 @@
 package com.example.aexpress.activities;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-
-import android.os.Bundle;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.aexpress.adaptors.ProductAdaptor;
-import com.example.aexpress.databinding.ActivityCartBinding;
 import com.example.aexpress.databinding.ActivityCategoryBinding;
 import com.example.aexpress.model.Product;
 import com.example.aexpress.utils.Constants;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.ArrayList;
 
 public class CategoryActivity extends AppCompatActivity {
-
     ActivityCategoryBinding binding;
     ProductAdaptor productAdaptor;
     ArrayList<Product> products;
@@ -86,5 +82,10 @@ public class CategoryActivity extends AppCompatActivity {
         });
 
         queue.add(request);
+    }
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }

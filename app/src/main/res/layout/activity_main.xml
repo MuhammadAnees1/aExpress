@@ -12,11 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <com.mancj.materialsearchbar.MaterialSearchBar
             android:id="@+id/searchBar"
@@ -29,9 +27,7 @@
             app:mt_maxSuggestionsCount="10"
             app:mt_speechMode="true" />
 
-
     </LinearLayout>
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -46,17 +42,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            >
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="10dp">
-
+                android:layout_margin="10dp"
+                app:cardCornerRadius="8dp"
+                >
                 <org.imaginativeworld.whynotimagecarousel.ImageCarousel
                     android:id="@+id/carousel"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
+                    app:showBottomShadow="false"
+                    app:showTopShadow="false"
                     app:showNavigationButtons="false"
                     app:showCaption="false"
                     app:autoPlay="true"/>
@@ -66,9 +65,9 @@
                 android:id="@+id/cardView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="10dp">
-
+                app:cardCornerRadius="8dp"
+                android:layout_margin="8dp"
+                >
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/categoriesList"
                     android:layout_width="match_parent"
@@ -80,9 +79,27 @@
                 android:id="@+id/productList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp" />
+                android:layout_margin="10dp"
+                 />
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
+<ImageView
+    android:id="@+id/removeBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:visibility="gone"
+    />
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

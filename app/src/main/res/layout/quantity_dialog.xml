@@ -2,7 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/backGroundColor">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -28,10 +29,12 @@
 
                 <TextView
                     android:id="@+id/productName"
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ellipsize="end"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
                     android:maxLines="1"
                     android:text="Product Name" />
 
@@ -39,8 +42,10 @@
                     android:id="@+id/productStock"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginStart="50dp"
                     android:gravity="right"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
                     android:text="0" />
             </LinearLayout>
 
@@ -52,19 +57,19 @@
                 android:orientation="horizontal"
                 android:padding="5dp">
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/minusBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#FF9100"
+                    android:background="#FF3366"
                     android:fontFamily="@font/roboto_bold"
                     android:text="-"
-                    android:textColor="#455A64"
+                    android:textColor="#263238"
                     android:textSize="22sp" />
 
                 <TextView
                     android:id="@+id/quantity"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:fontFamily="@font/roboto_bold"
@@ -73,24 +78,25 @@
                     android:textColor="@color/black"
                     android:textSize="22sp" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/plusBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="#FF9100"
+                    android:background="#FF3366"
                     android:fontFamily="@font/roboto_bold"
                     android:text="+"
-                    android:textColor="#455A64"
+                    android:textColor="#263238"
                     android:textSize="22sp" />
 
             </LinearLayout>
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/saveBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
+                android:background="@drawable/flot_button"
                 android:text="Save" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
