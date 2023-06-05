@@ -34,6 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 // Optionally, you can finish the activity or take appropriate action
             }
 
+
             binding.welcomeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
